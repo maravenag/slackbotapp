@@ -93,7 +93,6 @@ def handle_response(text, channel, user):
 
 if __name__ == "__main__":
 
-    print SLACK_TOKEN
     try:
         sc.rtm_connect()  # connect to a Slack RTM websocket
         while True:
