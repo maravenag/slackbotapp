@@ -12,7 +12,7 @@ urllib3.disable_warnings()
 BOT_ID = "U6MHXJWMT"
 BOT_USERNAME = "matibot"
 SLACK_BOT_ID = "USLACKBOT"
-SLACK_TOKEN = "xoxb-225609642741-7TxOPiHlRJ5EV5RbE5CZjgLE"
+SLACK_TOKEN = "xoxb-225609642741-bIu78b2bavbLU0jIGyDjhJZL"
 
 sc = SlackClient(SLACK_TOKEN)
 
@@ -82,12 +82,14 @@ def handle_response(text, channel, user):
 
     if("vamos a tomar chela?") in text:
         send_response(msg_type="button", text="Cuando vamos perrin?")
+    
+    if("testing buttons") in text:
+        send_response(msg_type="button", text="mensaje de prueba")
 
 if __name__ == "__main__":
     if sc.rtm_connect():  # connect to a Slack RTM websocket
         while True:
             # read all data from the RTM websocket
-            print sc.rtm_read()
             text, channel, user = parse_message(sc.rtm_read())
             if text is not None and channel is not None:
                 handle_response(text, channel, user)
