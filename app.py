@@ -14,10 +14,10 @@ urllib3.disable_warnings()
 parser = SafeConfigParser()
 parser.read('config.ini')
 
-BOT_ID = paser.get('slackbotapp', 'BOT_ID')
-BOT_USERNAME = paser.get('slackbotapp', 'BOT_USERNAME')
-SLACK_BOT_ID = paser.get('slackbotapp', 'SLACK_BOT_ID')
-SLACK_TOKEN = paser.get('slackbotapp', 'SLACK_TOKEN')
+BOT_ID = parser.get('slackbotapp', 'BOT_ID')
+BOT_USERNAME = parser.get('slackbotapp', 'BOT_USERNAME')
+SLACK_BOT_ID = parser.get('slackbotapp', 'SLACK_BOT_ID')
+SLACK_TOKEN = parser.get('slackbotapp', 'SLACK_TOKEN')
 
 sc = SlackClient(SLACK_TOKEN)
 
@@ -92,12 +92,15 @@ def handle_response(text, channel, user):
         send_response(msg_type="button", text="mensaje de prueba")
 
 if __name__ == "__main__":
-    if sc.rtm_connect():  # connect to a Slack RTM websocket
+
+    print SLACK_TOKEN
+    try:
+        sc.rtm_connect()  # connect to a Slack RTM websocket
         while True:
-            # read all data from the RTM websocket
+           # read all data from the RTM websocket
             text, channel, user = parse_message(sc.rtm_read())
             if text is not None and channel is not None:
                 handle_response(text, channel, user)
-            time.sleep(1)
-    else:
-        print 'Connection Failed, invalid token?'
+                time.sleep(1)
+    except Exception as e:
+        print e
