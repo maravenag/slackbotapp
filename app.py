@@ -69,8 +69,12 @@ def send_response(msg_type, text):
 
 
 def handle_response(text, channel, user):
+
+    if ("ayudame") in text:
+        send_response(msg_type="message", text="¿Aún no conoces los comandos y opciones? No hay problema, aquí están:/n- Crea Evaluación/n- Modifica Evaluación")
+        
     if ("a q hora tomamos") in text:
-        send_response(msg_type="message", text="A las 22:00hrs en el bunker")
+       send_response(msg_type="message", text="A las 22:00hrs en el bunker")
 
     if ("dime la hora" or "que hora es") in text:
         send_response(msg_type="message",
