@@ -5,14 +5,18 @@ from slackclient import SlackClient
 import time
 from datetime import datetime
 import os
+from ConfigParser import SafeConfigParser
 
 import urllib3
 urllib3.disable_warnings()
 
-BOT_ID = "U6MHXJWMT"
-BOT_USERNAME = "matibot"
-SLACK_BOT_ID = "USLACKBOT"
-SLACK_TOKEN = "xoxb-225609642741-7TxOPiHlRJ5EV5RbE5CZjgLE"
+parser = SafeConfigParser()
+parser.read('config.ini')
+
+BOT_ID = paser.get('slackbotapp', 'BOT_ID')
+BOT_USERNAME = paser.get('slackbotapp', 'BOT_USERNAME')
+SLACK_BOT_ID = paser.get('slackbotapp', 'SLACK_BOT_ID')
+SLACK_TOKEN = paser.get('slackbotapp', 'SLACK_TOKEN')
 
 sc = SlackClient(SLACK_TOKEN)
 
