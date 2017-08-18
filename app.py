@@ -12,7 +12,7 @@ urllib3.disable_warnings()
 BOT_ID = "U6MHXJWMT"
 BOT_USERNAME = "matibot"
 SLACK_BOT_ID = "USLACKBOT"
-SLACK_TOKEN = "xoxb-225609642741-ZNdXQ3sHYVdInfy8mwTIuUop"
+SLACK_TOKEN = "xoxb-225609642741-7TxOPiHlRJ5EV5RbE5CZjgLE"
 
 sc = SlackClient(SLACK_TOKEN)
 
