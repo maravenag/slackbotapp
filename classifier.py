@@ -24,7 +24,9 @@ class Classifier:
             ('me duele el estomago', 'triste'),
             ('no me siento bien de la cabeza', 'triste'),
             ('me fue bien en la prueba', 'felicidad'),
-            ('estaba facil la prueba', 'felicidad')
+            ('estaba facil la prueba', 'felicidad'),
+            ('me gusta beber cerveza', 'felicidad'),
+            ('la chela es rica', 'felicidad'),
         ]
         self.cl = NaiveBayesClassifier(self.train)
     
