@@ -6,6 +6,7 @@ import time
 from datetime import datetime
 import os
 from ConfigParser import SafeConfigParser
+from classifier import Classifier
 
 import urllib3
 urllib3.disable_warnings()
@@ -69,30 +70,16 @@ def send_response(msg_type, text):
 
 def handle_response(text, channel, user):
 
-    if ("ayudame") in text:
-        send_response(msg_type="message", text="¿Aún no conoces los comandos y opciones? No hay problema, aquí están:\n- Crea Evaluación\n- Modifica Evaluación")
-        
-    if ("a q hora tomamos") in text:
-       send_response(msg_type="message", text="A las 22:00hrs en el bunker")
-
-    if ("dime la hora" or "que hora es") in text:
-        send_response(msg_type="message",
-                      text="Son las {0}".format(str(datetime.now())))
-
-    if ("como estas?" or "como estas" or "como estás?") in text:
-        send_response(msg_type="message", text="Estoy super bien")
-
-    if("vamos a tomar?") in text:
-        send_response(msg_type="message", text="Vamos a ponerle a cagar")
-
-    if("sus piscolas") in text:
-        send_response(msg_type="message", text="vamos perro yo me rajo")
-
+    #if ("ayudame") in text:
+    #    send_response(msg_type="message", text="¿Aún no conoces los comandos y opciones? No hay problema, aquí están:\n- Crea Evaluación\n- Modifica Evaluación")    
     if("vamos a tomar chela?") in text:
-        send_response(msg_type="button", text="Cuando vamos perrin?")
+        send_response(msg_type="button", text="Cuando vamos perrin?") 
+    else:
+        cl = Classifier()
+        sentiment = cl.get_sentiment(text=text)
+        send_response(msg_type="message", text="<@{0}> te sientes asi: {1}".format(user, sentiment)) 
 
 if __name__ == "__main__":
-
     try:
         sc.rtm_connect()  # connect to a Slack RTM websocket
         while True:
