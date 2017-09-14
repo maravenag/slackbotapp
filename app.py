@@ -10,7 +10,6 @@ from ConfigParser import SafeConfigParser
 import urllib3
 urllib3.disable_warnings()
 
-
 parser = SafeConfigParser()
 parser.read('config.ini')
 
@@ -91,9 +90,6 @@ def handle_response(text, channel, user):
 
     if("vamos a tomar chela?") in text:
         send_response(msg_type="button", text="Cuando vamos perrin?")
-    
-    if("testing buttons") in text:
-        send_response(msg_type="button", text="mensaje de prueba")
 
 if __name__ == "__main__":
 
