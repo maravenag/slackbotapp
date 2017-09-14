@@ -15,6 +15,8 @@ class Classifier:
             ('me gusta ir a clases', 'felicidad'),
             ('este ramo es genial', 'felicidad'),
             ('me fue mal en la prueba', 'enojo'),
+            ('estaba dificil la prueba', 'triste'),
+            ('me fue como el hoyo en la prueba', 'triste'),
             ('me cae mal esa persona!', 'enojo'),
             ('odio los lunes', 'enojo'),
             ('al fin es viernes!', 'felicidad'),
